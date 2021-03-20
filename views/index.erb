@@ -1,2 +1,21 @@
 <h2>Welcome to Pizza Shop</h2>
-<button class="btn btn-primary" onclick="something()">Click me!</button>
+<br />
+
+<div class="row">
+	<% @products.each do |product| %>
+  		<div class="col-md-4">
+  		<h3><a href="/product/<%= product.id %>"><%= product.title %></a></h3>
+		<br />
+		
+		<img src="<%= product.path_to_image %>" width="250">
+		<p><b>Описание: </b> <%= product.description %></p>
+		<p><b>Размер: </b><%= product.size %></p>
+		<p><b>Острая: </b><%= is_boolean product.is_spicy %></p>
+		<p><b>Вегетарианская: </b><%= is_boolean product.is_veg %></p>
+		<p><b>Цена: </b><%= product.price %> руб.</p>
+		
+		<button class="btn btn-primary" onclick="add_to_cart()">Купить!</button>
+
+  		</div>
+  	<% end %>
+</div>
