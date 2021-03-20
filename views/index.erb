@@ -14,7 +14,7 @@
 		<p><b>Вегетарианская: </b><%= is_boolean product.is_veg %></p>
 		<p><b>Цена: </b><%= product.price %> руб.</p>
 		
-		<button class="btn btn-primary" onclick="add_to_cart()">Купить!</button>
+		<button class="btn btn-primary" onclick="add_to_cart(<%= product.id %>)">Купить!</button>
 
   		</div>
   	<% end %>
