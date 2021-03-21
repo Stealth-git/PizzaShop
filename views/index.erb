@@ -2,6 +2,11 @@
 <br />
 
 <div class="row">
+	<div class="col-md-11"></div>
+	<div class="col-md-1">Корзина: </div>
+</div>
+
+<div class="row">
 	<% @products.each do |product| %>
   		<div class="col-md-4">
   		<h3><a href="/product/<%= product.id %>"><%= product.title %></a></h3>
@@ -19,3 +24,5 @@
   		</div>
   	<% end %>
 </div>
+
+
