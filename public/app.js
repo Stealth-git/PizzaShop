@@ -63,7 +63,7 @@ function cart_get_orders() {
 		var key = window.localStorage.key(i); // получаем ключ
 		var value = window.localStorage.getItem(key); // получаем значение, аналог в ruby: hh[key] = x
 
-		if (key.indexOf('product_') == 0) {
+		if (key.indexOf('product_') == 0) {  // нулевая позиция
 			orders = orders + key + '=' + value + ',';
 		}
 	}
