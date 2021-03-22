@@ -1,32 +1,37 @@
 <h2>Корзина</h2> <!-- "product_1=6,product_2=3,product_3=1," -->
 
-<%= @items.inspect %>
-
 <table class="table">
   <caption>Ваш заказ:</caption>
   <thead>
     <tr>
       <th>#</th>
-      <th>Имя</th>
-      <th>Телефон</th>
-      <th>Дата и время</th>
-      <th>Название пиццы</th>
-      <th>Количество</th>
-      <th>Цена</th>
+      <th>Name</th>
+      <th>Size</th>
+      <th>Price</th>
+      <th>Qty</th>
     </tr>
   </thead>
   <tbody>
-  	
+  <% total_price = 0 %>
+  <% total_qty = 0 %>
+  <% @items.each do |item| %>	
     <tr>
-      <th>#</th>
-      <td>name</td>
-      <td>phone</td>
-      <td>datestamp</td>
-      <td>Название пиццы</td>
-      <td>Количество</td>
-      <td>Цена</td>
+      <td><%= item[0].id %></td>
+      <td><%= item[0].title %></td>
+      <td><%= item[0].size %></td>
+      <td><%= item[0].price %></td>
+      <td><%= item[1] %></td>
     </tr>
-    
+    <% total_price += item[0].price * item[1].to_i %>
+    <% total_qty += item[1].to_i %>
+  <% end %>
+    <tr>
+      <td></td>
+      <td><b>Total: </b></td>
+      <td></td>
+      <td><b><%= total_price %></b></td>
+      <td><b><%= total_qty %></b></td>
+    </tr>
   </tbody>
 </table>
 <button class="btn btn-primary" type="submit">Подтвердить</button>
