@@ -9,6 +9,9 @@ set :database, {adapter: "sqlite3", database: "pizzashop.db"}
 class Product < ActiveRecord::Base
 end
 
+class Order < ActiveRecord::Base
+end
+
 before do
 	@products = Product.all
 end
@@ -57,4 +60,15 @@ def parse_orders_input orders_input
 			arr.push arr2
 		end
 	return arr
+end
+
+post '/place_order' do
+
+	@o = Order.new params[:order]
+	if @o.save
+		erb "<h2>Заказ принят!</h2>"
+	else
+		@error = @c.errors.full_messages.first
+		erb :place_order
+	end
 end
