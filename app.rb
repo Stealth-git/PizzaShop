@@ -65,10 +65,6 @@ end
 post '/place_order' do
 
 	@o = Order.new params[:order]
-	if @o.save
-		erb "<h2>Заказ принят!</h2>"
-	else
-		@error = @c.errors.full_messages.first
-		erb :place_order
-	end
+	@o.save
+	erb :order_placed
 end
