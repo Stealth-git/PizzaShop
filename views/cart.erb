@@ -1,61 +1,61 @@
 <h2>Корзина</h2> <!-- "product_1=6,product_2=3,product_3=1," -->
 
-<table class="table">
-  <caption>Ваш заказ:</caption>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Size</th>
-      <th>Price</th>
-      <th>Qty</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% total_price = 0 %>
-  <% total_qty = 0 %>
-  <% @items.each do |item| %>	
-    <tr>
-      <td><%= item[0].id %></td>
-      <td><%= item[0].title %></td>
-      <td><%= item[0].size %></td>
-      <td><%= item[0].price %></td>
-      <td><%= item[1] %></td>
-    </tr>
-    <% total_price += item[0].price * item[1].to_i %>
-    <% total_qty += item[1].to_i %>
-  <% end %>
-    <tr>
-      <td></td>
-      <td><b>Total: </b></td>
-      <td></td>
-      <td><b><%= total_price %></b></td>
-      <td><b><%= total_qty %></b></td>
-    </tr>
-  </tbody>
-</table>
-
+<div id="cart">
+  <table class="table">
+    <caption>Ваш заказ:</caption>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Size</th>
+        <th>Price</th>
+        <th>Qty</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% total_price = 0 %>
+    <% total_qty = 0 %>
+    <% @items.each do |item| %>	
+      <tr>
+        <td><%= item[0].id %></td>
+        <td><%= item[0].title %></td>
+        <td><%= item[0].size %></td>
+        <td><%= item[0].price %></td>
+        <td><%= item[1] %></td>
+      </tr>
+      <% total_price += item[0].price * item[1].to_i %>
+      <% total_qty += item[1].to_i %>
+    <% end %>
+      <tr>
+        <td></td>
+        <td><b>Total: </b></td>
+        <td></td>
+        <td><b><%= total_price %></b></td>
+        <td><b><%= total_qty %></b></td>
+      </tr>
+    </tbody>
+  </table>
   
-<form action="/place_order" method="POST" role="form">
- 
-<input name="order[orders_input]" type="hidden" value="<%= @orders_input %>" />
+  <form action="/place_order" method="POST" role="form">
+   
+  <input name="order[orders_input]" type="hidden" value="<%= @orders_input %>" />
 
-  <div class="form-group">
-    <label>Name</label>
-    <input name="order[name]" type="text" class="form-control" placeholder="Введите ваше имя">
-  </div>
+    <div class="form-group">
+      <label>Name</label>
+      <input name="order[name]" type="text" class="form-control" placeholder="Введите ваше имя">
+    </div>
 
-  <div class="form-group">
-    <label>Phone</label>
-    <input name="order[phone]" type="text" class="form-control" placeholder="Ваш телефон">
-  </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <input name="order[phone]" type="text" class="form-control" placeholder="Ваш телефон">
+    </div>
 
-  <div class="form-group">
-    <label>Address</label>
-    <input name="order[address]" type="text" class="form-control" placeholder="Ваш адрес">
-  </div>
+    <div class="form-group">
+      <label>Address</label>
+      <input name="order[address]" type="text" class="form-control" placeholder="Ваш адрес">
+    </div>
 
-<button class="btn btn-success btn-lg" type="submit">Place this order!</button>
-<button class="btn btn-danger btn-lg" onclick="return cancel_order()">Cancel</button>
-</form>
-
+  <button class="btn btn-success btn-lg" type="submit">Place this order!</button>
+  <button class="btn btn-danger btn-lg" onclick="return cancel_order()">Cancel</button>
+  </form>
+</div>
